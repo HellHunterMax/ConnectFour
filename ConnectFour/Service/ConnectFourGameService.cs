@@ -1,6 +1,5 @@
 ﻿using ConnectFour.Exceptions;
 using ConnectFour.Models;
-using System;
 
 namespace ConnectFour.Service
 {
@@ -27,7 +26,7 @@ namespace ConnectFour.Service
             }
         }
 
-        private bool CheckDiagonalLeftToDown(Board board, CheckerColor color)
+        private static bool CheckDiagonalLeftToDown(Board board, CheckerColor color)
         {
             int numberOfConnectedCheckers = 1;
             int collumnLeft = board.LastPlacedCheckerCollumn - 1;
@@ -35,7 +34,7 @@ namespace ConnectFour.Service
             int rowUp = board.LastPlacedCheckerRow - 1;
             int rowDown = board.LastPlacedCheckerRow + 1;
 
-            while (collumnLeft >= 0 && rowUp >=0)
+            while (collumnLeft >= 0 && rowUp >= 0)
             {
                 if (board.Places[collumnLeft][rowUp] == null)
                 {
@@ -82,7 +81,7 @@ namespace ConnectFour.Service
 
         }
 
-        private bool CheckDiagonalLeftToUp(Board board, CheckerColor color)
+        private static bool CheckDiagonalLeftToUp(Board board, CheckerColor color)
         {
             int numberOfConnectedCheckers = 1;
             int collumnLeft = board.LastPlacedCheckerCollumn - 1;
@@ -112,7 +111,7 @@ namespace ConnectFour.Service
                 collumnLeft--;
                 rowDown++;
             }
-            while (collumnRight < 7 && rowUp >=0)
+            while (collumnRight < 7 && rowUp >= 0)
             {
                 if (board.Places[collumnRight][rowUp] == null)
                 {
@@ -139,13 +138,13 @@ namespace ConnectFour.Service
         private static bool CheckHorizontal(Board board, CheckerColor color)
         {
             int numberOfConnectedCheckers = 1;
-            int collumnLeft = board.LastPlacedCheckerCollumn -1;
+            int collumnLeft = board.LastPlacedCheckerCollumn - 1;
             int collumnRight = board.LastPlacedCheckerCollumn + 1;
             int row = board.LastPlacedCheckerRow;
 
             while (collumnLeft >= 0)
             {
-                if(board.Places[collumnLeft][row] == null)
+                if (board.Places[collumnLeft][row] == null)
                 {
                     break;
                 }
@@ -196,7 +195,7 @@ namespace ConnectFour.Service
             }
             else
             {
-                int locationTocheck = board.LastPlacedCheckerRow +1;
+                int locationTocheck = board.LastPlacedCheckerRow + 1;
                 while (locationTocheck < 6)
                 {
                     if (board.Places[board.LastPlacedCheckerCollumn][locationTocheck].Color == color)
