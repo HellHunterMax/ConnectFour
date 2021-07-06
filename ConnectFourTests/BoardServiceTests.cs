@@ -1,10 +1,7 @@
-using System;
-using Xunit;
-using FluentAssertions;
 using ConnectFour.Models;
 using ConnectFour.Service;
-using Moq;
-using ConnectFour.Factories;
+using FluentAssertions;
+using Xunit;
 
 namespace ConnectFourTests
 {
