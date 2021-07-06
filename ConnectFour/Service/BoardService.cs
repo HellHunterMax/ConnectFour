@@ -14,6 +14,8 @@ namespace ConnectFour.Service
         /// <param name="collumn">the collumn the checker will be palced in.</param>
         public void DropChecker(Board board, Checker checker, int collumn)
         {
+            VerifyValidinput(board, collumn);
+
             int rows = board.Places[collumn].Length;
 
             for (int row = 0; row < rows; row++)
@@ -34,15 +36,13 @@ namespace ConnectFour.Service
                 }
             }
         }
-        public static void VerifyValidinput(Board board, Checker checker, int collumn)
+        public static void VerifyValidinput(Board board, int collumn)
         {
             if (collumn < 0 || collumn >= board.Places.Length)
             {
                 throw new InvalidPlacementException($"{nameof(collumn)} : {collumn} is an invalid collumn.");
             }
         }
-        //TODO add check for win.
-        //TODO add check for draw.
 
     }
 }

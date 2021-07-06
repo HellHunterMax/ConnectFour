@@ -5,7 +5,8 @@ namespace ConnectFour.Models
     public class Board
     {
         public bool IsItWhitesTurn { get; private set; } = true;
-        public int[] LastPlacedChecker { get; private set; } = new int[2];
+        public int LastPlacedCheckerCollumn { get; private set; }
+        public int LastPlacedCheckerRow { get; private set; }
         public int CheckersPlaced { get; private set; }
         public Checker[][] Places { get; private set; } = new Checker[7][] {
             new Checker[6],
@@ -23,8 +24,8 @@ namespace ConnectFour.Models
 
             this.Places[collumn][row] = checker;
             this.IsItWhitesTurn = !this.IsItWhitesTurn;
-            this.LastPlacedChecker[0] = collumn;
-            this.LastPlacedChecker[1] = row;
+            this.LastPlacedCheckerCollumn = collumn;
+            this.LastPlacedCheckerRow = row;
             this.CheckersPlaced++;
         }
 
