@@ -1,5 +1,6 @@
 ﻿using ConnectFour.Exceptions;
 using ConnectFour.Models;
+using System;
 
 namespace ConnectFour.Service
 {
@@ -31,6 +32,13 @@ namespace ConnectFour.Service
                     board.PlaceChecker(checker, collumn, row);
                     break;
                 }
+            }
+        }
+        public static void VerifyValidinput(Board board, Checker checker, int collumn)
+        {
+            if (collumn < 0 || collumn >= board.Places.Length)
+            {
+                throw new InvalidPlacementException($"{nameof(collumn)} : {collumn} is an invalid collumn.");
             }
         }
         //TODO add check for win.
