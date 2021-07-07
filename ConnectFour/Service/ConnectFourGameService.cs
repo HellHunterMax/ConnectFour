@@ -6,6 +6,15 @@ namespace ConnectFour.Service
     //TODO create Game.
     public class ConnectFourGameService : IGameService
     {
+        public void NextMove(Board board, int collumn)
+        {
+
+        }
+        /// <summary>
+        /// This will check the board if there is a game ending scenario.
+        /// Will check Horizontal, vertical and diagonal for 4 connecting checkers of a single color.
+        /// </summary>
+        /// <param name="board">Board to check for game ending scenario</param>
         public void CheckGameEnd(Board board)
         {
             if (board.CheckersPlaced < 7)
@@ -18,9 +27,12 @@ namespace ConnectFour.Service
                 throw new GameEndException("Game is a Draw");
             }
 
-
             CheckerColor color = board.IsItWhitesTurn ? CheckerColor.Black : CheckerColor.White;
-            if (CheckHorizontal(board, color) || CheckVertical(board, color) || CheckDiagonalLeftToUp(board, color) || CheckDiagonalLeftToDown(board, color))
+
+            if (CheckHorizontal(board, color) ||
+                CheckVertical(board, color) ||
+                CheckDiagonalLeftToUp(board, color) ||
+                CheckDiagonalLeftToDown(board, color))
             {
                 throw new GameEndException($"Game ended {color} Wins!!!");
             }
