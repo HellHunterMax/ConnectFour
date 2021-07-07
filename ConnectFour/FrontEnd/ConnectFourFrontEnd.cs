@@ -6,7 +6,7 @@ namespace ConnectFour.FrontEnd
 {
     public class ConnectFourFrontEnd : IConnectFourFrontEnd
     {
-        private const string emptyCollumn = "   ", arrowCollumn = " V ";
+        private const string emptyCollumn = "   ", arrowWhite = " X ", arrowBlack = " O ";
         public int GetCollumnChoice(Board board)
         {
             ConsoleKey key = ConsoleKey.A;
@@ -24,13 +24,13 @@ namespace ConnectFour.FrontEnd
                 switch (key)
                 {
                     case ConsoleKey.LeftArrow:
-                        if (selectedCollumn >= 0)
+                        if (selectedCollumn > 0)
                         {
                             selectedCollumn--;
                         }
                         break;
                     case ConsoleKey.RightArrow:
-                        if (selectedCollumn <= board.Places.Length)
+                        if (selectedCollumn < board.Places.Length -1)
                         {
                             selectedCollumn++;
                         }
@@ -89,7 +89,8 @@ namespace ConnectFour.FrontEnd
                 }
                 else
                 {
-                    Console.Write(arrowCollumn);
+                    string arrow = board.IsItWhitesTurn ? arrowWhite : arrowBlack;
+                    Console.Write(arrow);
                 }
             }
             Console.WriteLine();

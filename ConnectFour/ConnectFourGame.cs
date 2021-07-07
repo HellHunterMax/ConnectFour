@@ -51,7 +51,7 @@ namespace ConnectFour
                     gameEndMessage = ex.Message;
                 }
             }
-            _connectFourFrontEnd.ShowGameEndScreen(gameEndMessage);
+            _connectFourFrontEnd.ShowGameEndScreen(board, gameEndMessage);
         }
 
     }
