@@ -13,10 +13,11 @@ namespace ConnectFour.FrontEnd
             int selectedCollumn = 0;
             while (key != ConsoleKey.Enter)
             {
+                key = ConsoleKey.A;
                 Console.Clear();
                 PrintArrowToCollumn(selectedCollumn, board);
-                printBoard(board);
-                while (key != ConsoleKey.Enter || key != ConsoleKey.LeftArrow || key != ConsoleKey.RightArrow)
+                PrintBoard(board);
+                while (key != ConsoleKey.Enter && key != ConsoleKey.LeftArrow && key != ConsoleKey.RightArrow)
                 {
                     key = Console.ReadKey().Key;
                 }
@@ -39,12 +40,12 @@ namespace ConnectFour.FrontEnd
             return selectedCollumn;
         }
 
-        private void printBoard(Board board)
+        private void PrintBoard(Board board)
         {
             for (int row = 0; row < board.Places[0].Length; row++)
             {
                 StringBuilder row1 = new(), row2 = new(), row3 = new();
-                for (int coll = 0; coll < board.Places[row].Length; coll++)
+                for (int coll = 0; coll < board.Places.Length; coll++)
                 {
                     char checkerOrNot = ' ';
                     if (board.Places[coll][row] == null)
@@ -64,9 +65,17 @@ namespace ConnectFour.FrontEnd
                     row2.Append($"|{checkerOrNot}|");
                     row3.Append("===");
                 }
-                Console.WriteLine(row1);
-                Console.WriteLine(row2);
-                Console.WriteLine(row3);
+                if (row == board.Places[0].Length -1)
+                {
+                    Console.WriteLine(row1);
+                    Console.WriteLine(row2);
+                    Console.WriteLine(row3);
+                }
+                else
+                {
+                    Console.WriteLine(row1);
+                    Console.WriteLine(row2);
+                }
             }
         }
 
@@ -86,9 +95,10 @@ namespace ConnectFour.FrontEnd
             Console.WriteLine();
         }
 
-        public void ShowGameEndScreen(string message)
+        public void ShowGameEndScreen(Board board, string message)
         {
             Console.Clear();
+            PrintBoard(board);
             Console.WriteLine(message);
         }
     }

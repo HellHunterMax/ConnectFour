@@ -15,6 +15,6 @@ namespace ConnectFour.FrontEnd
         /// Shows the message of who won
         /// </summary>
         /// <param name="message"></param>
-        void ShowGameEndScreen(string message);
+        void ShowGameEndScreen(Board board, string message);
     }
 }
